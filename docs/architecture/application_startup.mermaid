@@ -1,0 +1,9 @@
+graph TD
+    Start[Uvicorn Startup] --> LoadEnv[Load .env Configurations]
+    LoadEnv --> InitDB[Connect SQLite database]
+    InitDB --> Migration{Missing columns in chat_messages?}
+    Migration -->|Yes| Alter[Run ALTER TABLE SQL migrations]
+    Migration -->|No| ChromaConnect[Connect local ChromaDB collection]
+    Alter --> ChromaConnect
+    ChromaConnect --> ModelLoad[Load sentence-transformers on CPU]
+    ModelLoad --> Listen[FastAPI Ready and Listening on Port 8000]

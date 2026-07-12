@@ -1,0 +1,11 @@
+graph TD
+    UserMsg[User Message] --> AuthCheck{JWT Valid?}
+    AuthCheck -->|No| Reject[401 Unauthorized]
+    AuthCheck -->|Yes| RAG[Retrieve ChromaDB Context]
+    RAG --> ModelSelect{Groq Key Valid?}
+    ModelSelect -->|Yes| Groq[Call Groq LLaMA 3.3]
+    ModelSelect -->|No| Mock[Execute Heuristics Mock]
+    Groq --> Extract[Extract Diagnostics Metadata]
+    Mock --> Extract
+    Extract --> Stream[Stream to SSE Pipeline]
+    Stream --> Save[Commit Chat Message to SQLite]

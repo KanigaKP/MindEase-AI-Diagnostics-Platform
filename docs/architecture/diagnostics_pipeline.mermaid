@@ -1,0 +1,6 @@
+graph LR
+    Input[User Input] --> Parse[Inference Engine]
+    Parse --> Sentiment[Sentiment Score: -1.0 to 1.0]
+    Parse --> Stress[Stress level: Low/Moderate/High/Severe]
+    Parse --> Trauma[Trauma index: Minimal/Elevated/High/Crisis]
+    Parse --> Tone[Tone Category: CBT/Grounding/Empathy]

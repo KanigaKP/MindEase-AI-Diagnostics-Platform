@@ -1,0 +1,41 @@
+# Python
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Environment variables
+.env
+backend/.env
+frontend/.env
+
+# Databases
+*.db
+*.sqlite3
+
+# ChromaDB persistence
+chromadb_local/
+backend/data/chromadb_local/
+
+# Node
+node_modules/
+
+# Build artifacts
+dist/
+build/
+.vite/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+
+# Logs
+*.log
+
+# Jupyter
+.ipynb_checkpoints/

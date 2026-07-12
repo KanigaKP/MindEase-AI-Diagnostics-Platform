@@ -1,0 +1,13 @@
+sequenceDiagram
+    participant Client as React Client
+    participant SSE as SSE Generator Loop
+    participant Inference as Inference Service
+
+    Client->>SSE: POST /api/chat {message}
+    SSE->>Inference: Request stream
+    Inference-->>SSE: [ANALYSIS: sentiment=X, stress=Y, trauma=Z]
+    SSE-->>Client: data: {"sentiment_score": X, "stress_severity": Y}
+    Inference-->>SSE: Response Text Token
+    SSE-->>Client: data: {"text": "token"}
+    Inference-->>SSE: Stream Ends
+    SSE-->>Client: data: [DONE]

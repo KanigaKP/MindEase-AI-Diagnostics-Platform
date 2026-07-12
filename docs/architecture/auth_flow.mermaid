@@ -1,0 +1,10 @@
+sequenceDiagram
+    participant Client as React Client
+    participant Auth as Security Core (JWT)
+    participant DB as SQLite Database
+
+    Client->>Auth: POST /api/session/start {email}
+    Auth->>DB: Check or insert session record
+    DB-->>Auth: Confirm record
+    Auth->>Auth: Generate access_token (JWT signed)
+    Auth-->>Client: Return token & session_id

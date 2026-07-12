@@ -1,0 +1,7 @@
+graph TD
+    PDF[Ingest Mental Health PDF] --> Chunk[Split: 750 Chars, 100 Overlap]
+    Chunk --> Embed[Encode via sentence-transformers CPU]
+    Embed --> Index[Store in ChromaDB Collection]
+    UserQuery[User Chat Input] --> EncodeQuery[Encode via sentence-transformers CPU]
+    EncodeQuery --> Search[Query ChromaDB for Top 2 Results]
+    Search --> Context[Inject Context into System Prompt]

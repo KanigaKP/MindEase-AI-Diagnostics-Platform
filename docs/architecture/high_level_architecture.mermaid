@@ -1,0 +1,6 @@
+graph TD
+    Client[React Client] <-->|REST / SSE| Backend[FastAPI Backend]
+    Backend <-->|SQLAlchemy ORM| DB[(SQLite Database)]
+    Backend <-->|Embeddings / Retrieval| VectorDB[(ChromaDB Vector Store)]
+    Backend <-->|Inference Stream| LLM[Groq LLaMA Engine]
+    Backend <-->|Local Fallback Heuristics| MockEngine[Mock Diagnostics Engine]

@@ -1,0 +1,5 @@
+graph TD
+    Input[Incoming Diagnostics Metadata] --> Check{Stress == Severe OR Trauma == Crisis?}
+    Check -->|No| Normal[Render Chat Bubble with diagnostics metrics]
+    Check -->|Yes| Alert[Trigger Crisis Overlay State]
+    Alert --> Display[Overlay Support Hotlines & Box Breathing Pacer]

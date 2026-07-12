@@ -1,0 +1,5 @@
+graph TD
+    User([User Client Browser]) -->|Port 5173| Frontend[Vite React Frontend Container]
+    Frontend -->|Port 8000| Backend[FastAPI Backend Container]
+    Backend -->|Port 8001| Chroma[ChromaDB Vector Store Container]
+    Backend -->|Local volume| SQLite[(SQLite Database File)]

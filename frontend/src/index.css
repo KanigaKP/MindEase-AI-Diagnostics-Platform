@@ -1,0 +1,140 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
+
+@theme {
+  --color-void: #05010c;
+  --color-surface: #100622;
+  --color-aurora: #00e5ff;       /* Neon Cyan */
+  --color-pulse: #b55fe6;        /* Neon Purple */
+  --color-warm: #ff2a85;         /* Neon Pink/Rose */
+  --color-primary: #f3e8ff;      /* Muted Lavender White */
+  --color-muted: #8b829e;        /* Dark Muted Lavender */
+
+  --shadow-glow-aurora: 0 0 15px rgba(0, 229, 255, 0.4);
+  --shadow-glow-pulse: 0 0 15px rgba(181, 95, 230, 0.4);
+  --shadow-glow-warm: 0 0 15px rgba(255, 42, 133, 0.4);
+
+  --animate-pulse-slow: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --animate-float: float 6s ease-in-out infinite;
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+}
+
+@layer base {
+  :root {
+    --bg-void: #05010c;
+    --bg-surface: #100622;
+    --accent-aurora: #00e5ff;       /* Neon Cyan */
+    --accent-pulse: #b55fe6;        /* Neon Purple */
+    --accent-warm: #ff2a85;         /* Neon Pink */
+    --text-primary: #f3e8ff;
+    --text-muted: #8b829e;
+  }
+
+  body {
+    background-color: var(--bg-void);
+    color: var(--text-primary);
+    font-family: 'Outfit', 'Inter', system-ui, -apple-system, sans-serif;
+    margin: 0;
+    overflow-x: hidden;
+  }
+
+  /* Custom Scrollbars */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--bg-void);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #1f0d3d;
+    border-radius: 9999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-pulse);
+  }
+}
+
+/* Cyberpunk / Glassmorphic background grids */
+.bg-cosmic-grid {
+  background-image: 
+    radial-gradient(circle at 10% 20%, rgba(181, 95, 230, 0.12) 0%, transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(0, 229, 255, 0.12) 0%, transparent 40%),
+    radial-gradient(circle at 50% 50%, rgba(255, 42, 133, 0.05) 0%, transparent 50%),
+    linear-gradient(rgba(181, 95, 230, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(181, 95, 230, 0.02) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 100% 100%, 40px 40px, 40px 40px;
+  background-attachment: fixed;
+}
+
+.aurora-glow-text {
+  text-shadow: 0 0 10px rgba(0, 229, 255, 0.6), 0 0 20px rgba(0, 229, 255, 0.3);
+}
+
+.pulse-glow-text {
+  text-shadow: 0 0 10px rgba(181, 95, 230, 0.6), 0 0 20px rgba(181, 95, 230, 0.3);
+}
+
+.warm-glow-text {
+  text-shadow: 0 0 10px rgba(255, 42, 133, 0.6), 0 0 20px rgba(255, 42, 133, 0.3);
+}
+
+/* Glassmorphism card - purple neon border */
+.glass-panel {
+  background: rgba(16, 6, 34, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(181, 95, 230, 0.15);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+.glass-panel-light {
+  background: rgba(255, 255, 255, 0.015);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+/* Custom breathing animation */
+@keyframes breathing {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.65;
+    box-shadow: 0 0 35px rgba(181, 95, 230, 0.4), inset 0 0 20px rgba(181, 95, 230, 0.2);
+  }
+  50% {
+    transform: scale(1.3);
+    opacity: 1;
+    box-shadow: 0 0 60px rgba(0, 229, 255, 0.7), inset 0 0 40px rgba(0, 229, 255, 0.4);
+  }
+}
+
+.animate-breathing-circle {
+  animation: breathing 8s ease-in-out infinite;
+}
+
+/* Twinkling star particle animations */
+.stars {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background: transparent;
+  z-index: 0;
+}
+
+.cursor-trail-dot {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
