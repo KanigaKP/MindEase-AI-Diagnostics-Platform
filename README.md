@@ -303,3 +303,11 @@ Containerized deployment is configured using the root `docker-compose.yml`. For 
 ## 24. License Information
 
 MindEase is open-source software licensed under the MIT License. See [LICENSE](file:///c:/Users/sarca/OneDrive/Documents/projects/stress-trauma-detection/mental-health-support-chat-bot--main/mental-health-support-chat-bot--main/LICENSE) for details.
+
+## Author
+
+Kaniga Parameswaran
+
+GitHub: https://github.com/KanigaKP
+
+Email: sarcastickp18@gmail.com
